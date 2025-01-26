@@ -12,7 +12,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: `${process.env.FRONTEND_URL}`,
+    origin: process.env.FRONTEND_URL,
     credentials: true,
   })
 );
@@ -165,6 +165,8 @@ app.get("/auth/failure", (req, res) => {
   res.send("Authentication failed. Please try again.");
 });
 
-app.listen(3000, () => {
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => {
   console.log("Server running on Port 3000");
 });
